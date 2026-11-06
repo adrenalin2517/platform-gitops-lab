@@ -1,0 +1,33 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xappenvironments.platform.example.org
+spec:
+  group: platform.example.org
+  names:
+    kind: XAppEnvironment
+    plural: xappenvironments
+  claimNames:
+    kind: AppEnvironment
+    plural: appenvironments
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required:
+                - appName
+                - environment
+              properties:
+                appName:
+                  type: string
+                  description: "Ім'я мікросервісу"
+                environment:
+                  type: string
+                  enum: ["development", "staging", "production"]
+                  description: "Цільове середовище"
