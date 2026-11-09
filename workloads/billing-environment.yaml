@@ -1,8 +1,0 @@
-apiVersion: platform.example.org/v1alpha1
-kind: AppEnvironment
-metadata:
-  name: billing-microservice-env
-  namespace: default
-spec:
-  appName: billing
-  environment: staging
